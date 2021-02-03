@@ -52,7 +52,23 @@ describe('returnCard', function() {
 });
 
 describe('evaluateGuess', function() {
+  it('should indicate that a right answer is correct', function() {
+    const card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
+    const turn = new Turn('Black', card);
 
+    const result = turn.evaluateGuess();
+
+    expect(result).to.equal(true);
+  })
+
+  it('should indicate that a wrong answer is incorrect', function() {
+    const card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
+    const turn = new Turn('Brown', card);
+
+    const result = turn.evaluateGuess();
+
+    expect(result).to.equal(false);
+  })
 });
 
 describe('giveFeedback', function() {
