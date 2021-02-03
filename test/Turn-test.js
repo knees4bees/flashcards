@@ -37,7 +37,7 @@ describe('returnGuess', function() {
     const returnedGuess = turn.returnGuess(); 
 
     expect(returnedGuess).to.equal('React');
-  })
+  });
 });
 
 describe('returnCard', function() {
@@ -48,7 +48,7 @@ describe('returnCard', function() {
     const returnedCard = turn.returnCard(); 
 
     expect(returnedCard).to.deep.equal(card);
-  })
+  });
 });
 
 describe('evaluateGuess', function() {
@@ -59,7 +59,7 @@ describe('evaluateGuess', function() {
     const result = turn.evaluateGuess();
 
     expect(result).to.equal(true);
-  })
+  });
 
   it('should indicate that a wrong answer is incorrect', function() {
     const card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
@@ -68,9 +68,25 @@ describe('evaluateGuess', function() {
     const result = turn.evaluateGuess();
 
     expect(result).to.equal(false);
-  })
+  });
 });
 
 describe('giveFeedback', function() {
+  it('should display an appropriate message when an answer is correct', function() {
+    const card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
+    const turn = new Turn('Black', card);
 
+    const message = turn.giveFeedback();
+
+    expect(message).to.equal('correct!');
+  });
+
+  it('should display an appropriate message when an answer is incorrect', function() {
+    const card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
+    const turn = new Turn('Brown', card);
+
+    const message = turn.giveFeedback();
+
+    expect(message).to.equal('incorrect!');
+  });
 });
