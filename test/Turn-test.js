@@ -28,3 +28,33 @@ describe('Turn', function() {
     expect(turn.currentCard).to.deep.equal(card);
   });  
 });
+
+describe('returnGuess', function() {
+  it('should return the user\'s guess', function() {
+    const card = new Card(5, 'What is the best ice cream?', ['Vanilla', 'React', 'Angular'], 'Vanilla');
+    const turn = new Turn('React', card);
+
+    const returnedGuess = turn.returnGuess(); 
+
+    expect(returnedGuess).to.equal('React');
+  })
+});
+
+describe('returnCard', function() {
+  it('should return the current card', function() {
+    const card = new Card(5, 'What is the best ice cream?', ['Vanilla', 'React', 'Angular'], 'Vanilla');
+    const turn = new Turn('React', card);
+
+    const returnedCard = turn.returnCard(); 
+
+    expect(returnedCard).to.deep.equal(card);
+  })
+});
+
+describe('evaluateGuess', function() {
+
+});
+
+describe('giveFeedback', function() {
+
+});
