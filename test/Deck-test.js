@@ -14,16 +14,6 @@ describe('Deck', function() {
     deck = new Deck([card1, card2, card3]);
   });
 
-  // TODO ask whether this kind of test is needed
-  it('should be a function', function() {
-    expect(Deck).to.be.a('function');
-  });
-
-  // TODO ask whether this kind of test is needed
-  it('should be an instance of Deck', function() {
-    expect(deck).to.be.an.instanceof(Deck);
-  }); 
-
   it('should begin with an array of cards', function() {
     expect(deck.cards).to.deep.equal([card1, card2, card3]);
   });

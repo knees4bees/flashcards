@@ -12,16 +12,6 @@ describe('Turn', function() {
     turn = new Turn('The Byrds', card);
   });
 
-  // TODO ask whether this kind of test is needed
-  it('should be a function', function() {
-    expect(Turn).to.be.a('function');
-  });
-
-  // TODO ask whether this kind of test is needed
-  it('should be an instance of Turn', function() {
-    expect(turn).to.be.an.instanceof(Turn);
-  }); 
-
   it('should store a user\'s guess', function() {
     expect(turn.guess).to.equal('The Byrds');
   });  
