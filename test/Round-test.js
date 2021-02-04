@@ -70,7 +70,13 @@ describe('Round', function() {
   });
 
   describe('calculatePercentCorrect', function() {
-    it('should calculate a score as a percentage', function() {
+    it('should give a score of zero if no turns have been taken yet', function() {
+      const score = round.calculatePercentCorrect();
+
+      expect(score).to.equal(0);
+    });
+
+    it('should calculate a non-zero score as a percentage', function() {
       round.takeTurn('cheese');
       round.takeTurn('sandwich');
       round.takeTurn('tea');
