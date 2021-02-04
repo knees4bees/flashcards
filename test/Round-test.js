@@ -17,7 +17,9 @@ describe('Round', function() {
   });
 
   it('should have a deck', function() {
-    expect(round.deck).to.deep.equal([card1, card2, card3]);
+    expect(round.deck).to.exist;
+    expect(round.deck).to.be.an.instanceof(Deck);
+    expect(round.deck.cards).to.deep.equal([card1, card2, card3]);
   });
 
   it('should start with 0 turns', function() {
