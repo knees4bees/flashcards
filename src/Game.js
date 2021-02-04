@@ -24,6 +24,12 @@ class Game {
     return deck;
   }
 
+  createRound() {
+    const round = new Round(this.createDeck());
+
+    return round;
+  }
+
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)

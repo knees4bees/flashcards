@@ -41,4 +41,13 @@ describe('Game', function() {
     
     expect(deck.cards).to.deep.equal(cards);
   });
+
+  it('should create a new Round using the Deck', function() {
+    // const cards = game.createCards();
+    const deck = game.createDeck();
+    const round1 = new Round(deck);
+    const round2 = game.createRound();
+    
+    expect(round1).to.deep.equal(round2);
+  });
 });
