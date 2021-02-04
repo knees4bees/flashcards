@@ -18,6 +18,12 @@ class Game {
     return quizCards;
   }
 
+  createDeck() {
+    const deck = new Deck(this.createCards());
+
+    return deck;
+  }
+
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)

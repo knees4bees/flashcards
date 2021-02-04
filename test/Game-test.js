@@ -15,6 +15,10 @@ describe('Game', function() {
     game = new Game();
   });
 
+  it('should be an instance of Game', function() {
+    expect(game).to.be.an.instanceof(Game);
+  })
+
   it('should have a current round', function() {
     // const deck = new Deck(prototypeQuestions);
     // const round = new Round(deck);
@@ -24,13 +28,17 @@ describe('Game', function() {
     expect(game.currentRound).to.exist;
   });
 
-
-
-    // TODO figure out whether/how I need to test this
   it('should create Cards', function() {
     const cards = game.createCards();
     
     // TODO find way to test this more fully? (right now prototypeQuestions are not Card objects)
     expect(cards[0]).to.deep.equal(prototypeQuestions[0]);
+  });
+
+  it('should put Cards in a Deck', function() {
+    const cards = game.createCards();
+    const deck = game.createDeck();
+    
+    expect(deck.cards).to.deep.equal(cards);
   });
 });
