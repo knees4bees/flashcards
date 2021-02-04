@@ -37,7 +37,6 @@ describe('Round', function() {
   });
 
   describe('takeTurn', function() {
-
     it('should update the turns count', function() {
       round.takeTurn('chips');
       round.takeTurn('apple');
