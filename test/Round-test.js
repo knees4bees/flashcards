@@ -28,18 +28,15 @@ describe('Round', function() {
     expect(round.incorrectGuesses).to.deep.equal([]);
   })
 
-  it('should return the current card being played', function() {
-    const currentCard = round.returnCurrentCard();
+  describe('returnCurrentCard', function() {
+    it('should return the current card being played', function() {
+      const currentCard = round.returnCurrentCard();
 
-    expect(currentCard).to.equal(card1);
+      expect(currentCard).to.equal(card1);
+    });
   });
 
   describe('takeTurn', function() {
-
-    it.skip('should create a new Turn instance', function() {
-      // TODO figure out how to implement this ... or just skip it
-      expect(round.takeTurn('chips')).to // ... create an instance of Turn ... ();
-    });
 
     it('should update the turns count', function() {
       round.takeTurn('chips');
