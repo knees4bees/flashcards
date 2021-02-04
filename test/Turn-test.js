@@ -12,16 +12,6 @@ describe('Turn', function() {
     turn = new Turn('The Byrds', card);
   });
 
-  // TODO ask whether this kind of test is needed
-  it('should be a function', function() {
-    expect(Turn).to.be.a('function');
-  });
-
-  // TODO ask whether this kind of test is needed
-  it('should be an instance of Turn', function() {
-    expect(turn).to.be.an.instanceof(Turn);
-  }); 
-
   it('should store a user\'s guess', function() {
     expect(turn.guess).to.equal('The Byrds');
   });  
@@ -29,73 +19,56 @@ describe('Turn', function() {
   it('should store the current card in play', function() {
     expect(turn.currentCard).to.deep.equal(card);
   });  
-});
 
-describe('return user input', function() {
-  let card, turn;
+  describe('returnGuess', function() {
+    it('should return the user\'s guess', function() {
+      const returnedGuess = turn.returnGuess(); 
 
-  beforeEach(function() {
-    card = new Card(5, 'What is the best ice cream?', ['Vanilla', 'React', 'Angular'], 'Vanilla');
-    turn = new Turn('React', card);
+      expect(returnedGuess).to.equal('The Byrds');
+    });
   });
 
-  it('should return the user\'s guess', function() {
-    const returnedGuess = turn.returnGuess(); 
+  describe('returnCard', function() {
+    it('should return the current card', function() {
+      const returnedCard = turn.returnCard(); 
 
-    expect(returnedGuess).to.equal('React');
+      expect(returnedCard).to.deep.equal(card);
+    });
   });
 
-  it('should return the current card', function() {
-    const returnedCard = turn.returnCard(); 
+  describe('evaluateGuess', function() {
+    it('should indicate that a right answer is correct', function() {
+      const turn = new Turn('Flock of Seagulls', card);
 
-    expect(returnedCard).to.deep.equal(card);
-  });
-});
+      const result = turn.evaluateGuess();
 
-describe('evaluateGuess', function() {
-  let card;
+      expect(result).to.equal(true);
+    });
 
-  beforeEach(function() {
-    card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
-  });
+    it('should indicate that a wrong answer is incorrect', function() {
+      const turn = new Turn('Black Crowes', card);
 
-  it('should indicate that a right answer is correct', function() {
-    const turn = new Turn('Black', card);
+      const result = turn.evaluateGuess();
 
-    const result = turn.evaluateGuess();
-
-    expect(result).to.equal(true);
+      expect(result).to.equal(false);
+    });
   });
 
-  it('should indicate that a wrong answer is incorrect', function() {
-    const turn = new Turn('Brown', card);
+  describe('giveFeedback', function() {
+    it('should display an appropriate message when an answer is correct', function() {
+      const turn = new Turn('Flock of Seagulls', card);
 
-    const result = turn.evaluateGuess();
+      const message = turn.giveFeedback();
 
-    expect(result).to.equal(false);
-  });
-});
+      expect(message).to.equal('correct!');
+    });
 
-describe('giveFeedback', function() {
-  let card;
+    it('should display an appropriate message when an answer is incorrect', function() {
+      const turn = new Turn('The Byrds', card);
 
-  beforeEach(function() {
-    card = new Card(6, 'Which bear is the best bear?', ['Black', 'Brown', 'Polar'], 'Black');
-  });
+      const message = turn.giveFeedback();
 
-  it('should display an appropriate message when an answer is correct', function() {
-    const turn = new Turn('Black', card);
-
-    const message = turn.giveFeedback();
-
-    expect(message).to.equal('correct!');
-  });
-
-  it('should display an appropriate message when an answer is incorrect', function() {
-    const turn = new Turn('Brown', card);
-
-    const message = turn.giveFeedback();
-
-    expect(message).to.equal('incorrect!');
+      expect(message).to.equal('incorrect!');
+    });
   });
 });
