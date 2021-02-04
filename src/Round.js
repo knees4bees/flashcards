@@ -24,6 +24,16 @@ class Round {
 
     return turn.giveFeedback();
   }
+
+  calculatePercentCorrect() {
+    const numCorrect = this.turns - this.incorrectGuesses.length;
+
+    if (this.turns > 0) {
+      return Math.round((numCorrect / this.turns) * 100);
+    } else {
+      return 0;
+    }
+  }
 }
 
 module.exports = Round;

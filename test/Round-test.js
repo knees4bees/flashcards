@@ -4,7 +4,6 @@ const expect = chai.expect;
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
-const Turn = require('../src/Turn');
 
 describe('Round', function() {
   let card1, card2, card3, deck, round;
@@ -36,11 +35,6 @@ describe('Round', function() {
   });
 
   describe('takeTurn', function() {
-    let turn;
-
-    beforeEach(function() {
-      turn = new Turn('chips', card1);
-    });
 
     it.skip('should create a new Turn instance', function() {
       // TODO figure out how to implement this ... or just skip it
@@ -76,6 +70,18 @@ describe('Round', function() {
       const result2 = round.takeTurn('apple');
 
       expect(result2).to.equal('correct!');
+    });
+  });
+
+  describe('calculatePercentCorrect', function() {
+    it('should calculate a score as a percentage', function() {
+      round.takeTurn('cheese');
+      round.takeTurn('sandwich');
+      round.takeTurn('tea');
+
+      const score = round.calculatePercentCorrect();
+
+      expect(score).to.equal(67);
     });
   });
 });
