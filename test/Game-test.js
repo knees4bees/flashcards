@@ -1,8 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Card = require('../src/Card');
-const Deck = require('../src/Deck');
 const Game = require('../src/Game');
 const Round = require('../src/Round');
 const data = require('../src/data');
@@ -20,11 +18,6 @@ describe('Game', function() {
   })
 
   it('should have a current round', function() {
-    // const deck = new Deck(prototypeQuestions);
-    // const round = new Round(deck);
-    // const game = new Game();
-
-    // expect(game.currentRound).to.deep.equal(round);
     expect(game.currentRound).to.exist;
   });
 
@@ -33,21 +26,34 @@ describe('Game', function() {
     
     // TODO find way to test this more fully? (right now prototypeQuestions are not Card objects)
     expect(cards[0]).to.deep.equal(prototypeQuestions[0]);
+    expect(cards.length).to.equal(prototypeQuestions.length);
   });
 
   it('should put Cards in a Deck', function() {
     const cards = game.createCards();
+
     const deck = game.createDeck();
     
     expect(deck.cards).to.deep.equal(cards);
   });
 
   it('should create a new Round using the Deck', function() {
-    // const cards = game.createCards();
     const deck = game.createDeck();
     const round1 = new Round(deck);
+
     const round2 = game.createRound();
     
     expect(round1).to.deep.equal(round2);
+  });
+
+  it.skip('should start a new game', function() {
+    const deck = game.createDeck();
+    const round1 = new Round(deck);
+
+    // TODO how to test this without actually starting a new game?
+    const myGame = game.start();
+    const round2 = myGame.currentRound;
+
+    expect(round1).to.equal(round2);
   });
 });

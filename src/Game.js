@@ -30,6 +30,12 @@ class Game {
     return round;
   }
 
+  start() {
+    this.currentRound = this.createRound();
+    this.printMessage(this.currentRound.deck);
+    this.printQuestion(this.currentRound);
+  }
+
   printMessage(deck, round) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
