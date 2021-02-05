@@ -10,18 +10,10 @@ class Game {
     this.currentRound = {};
   }
 
-  createCards() {
-    const quizCards = prototypeQuestions.map((protoCard) => {
-      return new Card(protoCard.id, protoCard.question, protoCard.answers, protoCard.correctAnswer);
-    });
-
-    return quizCards;
-  }
-
-  createDeck() {
-    const deck = new Deck(this.createCards());
-
-    return deck;
+  start() {
+    this.currentRound = this.createRound();
+    this.printMessage(this.currentRound.deck);
+    this.printQuestion(this.currentRound);
   }
 
   createRound() {
@@ -30,10 +22,18 @@ class Game {
     return round;
   }
 
-  start() {
-    this.currentRound = this.createRound();
-    this.printMessage(this.currentRound.deck);
-    this.printQuestion(this.currentRound);
+  createDeck() {
+    const deck = new Deck(this.createCards());
+
+    return deck;
+  }
+
+  createCards() {
+    const quizCards = prototypeQuestions.map((protoCard) => {
+      return new Card(protoCard.id, protoCard.question, protoCard.answers, protoCard.correctAnswer);
+    });
+
+    return quizCards;
   }
 
   printMessage(deck) {
