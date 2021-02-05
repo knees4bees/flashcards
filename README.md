@@ -5,7 +5,7 @@ FlashCards is a command-line app that displays a series of multiple-choice quiz 
 
 ---
 ## FlashCards in Action
-![flash cards example gif](https://media.giphy.com/media/1zkb1q58eTiTH6D7wc/giphy.gif)
+![FlashCards gif showing playthrough of complete game](./flashcards.gif)
 
 ---
 ## Installation and Setup
