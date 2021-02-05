@@ -88,17 +88,4 @@ describe('Round', function() {
       expect(score).to.equal(67);
     });
   });
-
-  // revive this test if opting for return statement instead of console.log in endRound method
-  // describe('endRound', function() {
-  //   it('should print a message when the round is over', function() {
-  //     round.takeTurn('pretzels');
-  //     round.takeTurn('apple');
-  //     round.takeTurn('coffee');
-
-  //     const message = round.endRound();
-
-  //     expect(message).to.equal('** Round over! ** You answered 33% of the questions correctly!');
-  //   });
-  // });
 });
