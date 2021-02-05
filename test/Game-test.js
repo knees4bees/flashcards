@@ -24,8 +24,8 @@ describe('Game', function() {
   it('should create Cards', function() {
     const cards = game.createCards();
     
-    // TODO find way to test this more fully? (right now prototypeQuestions are not Card objects)
     expect(cards[0]).to.deep.equal(prototypeQuestions[0]);
+    expect(cards[cards.lastIndexOf()]).to.deep.equal(prototypeQuestions[cards.lastIndexOf()]);
     expect(cards.length).to.equal(prototypeQuestions.length);
   });
 
@@ -50,7 +50,6 @@ describe('Game', function() {
     const deck = game.createDeck();
     const round1 = new Round(deck);
 
-    // TODO how to test this without actually starting a new game?
     const myGame = game.start();
     const round2 = myGame.currentRound;
 
